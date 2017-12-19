@@ -1,0 +1,6 @@
+<div *ngFor="let item of notes">
+  <p>id: {{ item.group_id}}</p>
+  <div *ngFor="let itemChild of item.notes">
+    <p>notes: {{ itemChild.id }}</p>
+  </div>
+</div>
