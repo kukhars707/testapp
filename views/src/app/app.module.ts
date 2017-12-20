@@ -4,7 +4,6 @@ import { HttpModule, JsonpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
 import { NotesService } from './services/notes.service';
-import { GroupsService } from './services/groups.service';
 
 
 import { AppComponent } from './app.component';
@@ -24,7 +23,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
       HttpModule,
       JsonpModule
   ],
-  providers: [NotesService, GroupsService],
+  providers: [NotesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,6 @@
 var config = {
     host: 'localhost',
-    user: 'admin',
+    user: 'root',
     password: 'root',
     database: 'treloclone'
 };

@@ -1,6 +1,20 @@
-<div *ngFor="let item of notes">
-  <p>id: {{ item.group_id}}</p>
-  <div *ngFor="let itemChild of item.notes">
-    <p>notes: {{ itemChild.id }}</p>
+<div class="dashbord">
+  <div class="container my-3">
+    <div class="row">
+      <div class="col-md-3" *ngFor="let item of notes">
+        <div class="dashbord_group">
+          <div class="dashbord_group_wrapper">
+            <h5 class="dashbord_group_wrapper_title">{{ item.group_name }}</h5>
+          </div>
+          <div class="dashbord_group_body">
+            <div *ngFor="let itemNotes of item.notes" class="card my-2">
+              <div class="card-body">
+                <p class="card-text">{{ itemNotes.name }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

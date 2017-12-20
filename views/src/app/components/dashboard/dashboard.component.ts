@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import { NotesService } from '../../services/notes.service';
-import { GroupsService } from '../../services/groups.service';
 
 import { Notes } from '../../model/notes';
-import {Groups} from '../../model/groups';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,7 +15,7 @@ export class DashboardComponent implements OnInit {
   test: string;
   errorMessage: string;
 
-  constructor(private notesService: NotesService, private groupService: GroupsService) { }
+  constructor(private notesService: NotesService) { }
 
   ngOnInit() {
     this.getNotes();
@@ -31,12 +29,5 @@ export class DashboardComponent implements OnInit {
         error => this.errorMessage = error
     );
   }
-
-  // private getGroups() {
-  //   this.groupService.getGroups().subscribe(
-  //       groups => this.groups = groups,
-  //       error => this.errorMessage = error
-  //   );
-  // }
 
 }
