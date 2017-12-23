@@ -19,6 +19,7 @@ app.use(function (req, res, next) {
 
 app.use('/', routes);
 app.use('/notes', routes);
+app.use('registration', routes);
 
 app.listen(8080, function () {
    console.log('Start...');

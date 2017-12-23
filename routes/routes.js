@@ -7,4 +7,6 @@ router.get('/', controllers.homecontroller.index);
 
 router.get('/notes', controllers.notescontroller.getNotes);
 
+router.post('/registration', controllers.registration.addUser);
+
 module.exports = router;
