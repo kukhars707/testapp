@@ -1,6 +1,6 @@
-var mysql = require('mysql');
-var bcrypt = require('bcrypt');
-var jwt = require('jwt-simple');
+const mysql = require('mysql');
+const bcrypt = require('bcrypt');
+const salt = 10;
 
 module.exports = {
 
@@ -17,20 +17,21 @@ module.exports = {
             password: req.body.password
         };
 
-        db.query('INSERT INTO users SET ?', user, function (err, result) {
-           if(err) {res.sendStatus(500)}
-           else{
-               res.json({
-                   status:true,
-                   data: result
-               });
-               bcrypt.hash(user.password, 10, function (err) {
-                   if(err){res.sendStatus(500)}
-                   else{
-                       res.sendStatus(201);
-                   }
-               });
-           }
+        bcrypt.hash(user.password, salt, function (err, hash) {
+            if(err){res.sendStatus(500)}
+            else{
+                user.password = hash;
+                db.query('INSERT INTO users SET ?', user, function (err, result) {
+                    if(err) {
+                        res.sendStatus(400);
+                        console.log(err);
+                    }
+                    else{
+                        res.sendStatus(201);
+                        console.log(result);
+                    }
+                });
+            }
         });
     }
 
